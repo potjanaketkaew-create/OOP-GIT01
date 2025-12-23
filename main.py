@@ -1,6 +1,7 @@
 class Car:
-    def __init__(self, model):
+    def __init__(self, model, is_moving=True):
         self.model = model
+        self.is_moving = is_moving
         self.__mileage = 0 
 
     def drive(self):
@@ -18,6 +19,9 @@ class Car:
 
     def make_sound(self):
         print("Beep Beep!")
+    def apply_brake(self):
+        print("Slowing down...")
+        self.is_moving = False
 
 
 class ElectricCar(Car):
@@ -52,3 +56,7 @@ garage = [Car("Toyota"), ElectricCar("BYD", 60), Truck("Volvo")]
 for vehicle in garage:
     print(f"{vehicle.model}: ", end="")
     vehicle.make_sound()
+my_car = Car("Totota")
+print(f'Car is moving? {my_car.is_moving}')
+my_car.apply_brake()
+print(f'Car is moving? {my_car.is_moving}')
